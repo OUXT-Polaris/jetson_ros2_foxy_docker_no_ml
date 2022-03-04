@@ -145,7 +145,7 @@ RUN apt-get update && \
     `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list' && \
     apt-get update
 
-RUN apt update && apt install -y ros-foxy-desktop  python3-colcon-common-extensions
+RUN apt update && apt install -y ros-galactic-desktop  python3-colcon-common-extensions
 
 
 

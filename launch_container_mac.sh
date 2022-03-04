@@ -2,7 +2,7 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 
-NAME_IMAGE='jetson_ros2_foxy_no_ml'
+NAME_IMAGE='jetson_ros2_galactic_no_ml'
 
 # Make Container
 if [ ! "$(docker image ls -q ${NAME_IMAGE})" ]; then
@@ -22,8 +22,8 @@ fi
 if [ ! $# -ne 1 ]; then
 	if [ "commit" = $1 ]; then
 		echo 'Now commiting docker container...'
-		docker commit jetson_ros2_foxy_no_ml_container jetson_ros2_foxy_no_ml:latest
-		CONTAINER_ID=$(docker ps -a -f name=jetson_ros2_foxy_no_ml_container --format "{{.ID}}")
+		docker commit jetson_ros2_galactic_no_ml_container jetson_ros2_galactic_no_ml:latest
+		CONTAINER_ID=$(docker ps -a -f name=jetson_ros2_galactic_no_ml_container --format "{{.ID}}")
 		docker rm $CONTAINER_ID
 		exit
 	fi
@@ -39,7 +39,7 @@ fi
 chmod a+r $XAUTH
 
 DOCKER_OPT=""
-DOCKER_NAME="jetson_ros2_foxy_no_ml_container"
+DOCKER_NAME="jetson_ros2_galactic_no_ml_container"
 DOCKER_WORK_DIR="/home/${USER}"
 DISPLAY=$(hostname).local:0
 
@@ -60,14 +60,14 @@ DOCKER_OPT="${DOCKER_OPT} -it "
 		
 ## Allow X11 Connection
 xhost +local:Docker-`hostname`
-CONTAINER_ID=$(docker ps -a -f name=jetson_ros2_foxy_no_ml_container --format "{{.ID}}")
+CONTAINER_ID=$(docker ps -a -f name=jetson_ros2_galactic_no_ml_container --format "{{.ID}}")
 if [ ! "$CONTAINER_ID" ]; then
 	docker run ${DOCKER_OPT} \
 		--shm-size=1gb \
 		--env=TERM=xterm-256color \
 		--net=host \
 		--name=${DOCKER_NAME} \
-		jetson_ros2_foxy_no_ml:latest \
+		jetson_ros2_galactic_no_ml:latest \
 		bash
 else
 	docker start $CONTAINER_ID

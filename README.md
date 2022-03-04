@@ -1,5 +1,5 @@
-# jetson_ros2_foxy_docker_no_ml
-Jetson Docker Container for ROS2 Foxy with CUDA, CUDNN and TensorRT
+# jetson_ros2_galactic_docker_no_ml
+Jetson Docker Container for ROS2 galactic with CUDA, CUDNN and TensorRT
 
 This docker container is based on ubuntu20.04.
 This container doesn't contain the machine learning libraries like PyTorch. 
